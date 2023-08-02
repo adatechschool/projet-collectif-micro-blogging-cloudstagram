@@ -16,8 +16,7 @@ class UserFactoryTest extends TestCase
     public function test_user_factory_relationship_with_post()
     {
         $user = User::factory()->create();
-        $post = Post::factory()->create();
-        $user->posts()->save($post);
+        $post = Post::factory()->create(['user_id' => $user->id]);
         $this->assertInstanceOf(User::class, $post->user);
     }
 }

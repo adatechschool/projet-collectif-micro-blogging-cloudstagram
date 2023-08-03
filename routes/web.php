@@ -31,4 +31,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts/{id}', [PostController::class, 'displayOne']);
 
+Route::get('/create_post', function () {
+    return view('postCreation');
+})->middleware(['auth', 'verified'])->name('postCreation');;
+
 require __DIR__.'/auth.php';

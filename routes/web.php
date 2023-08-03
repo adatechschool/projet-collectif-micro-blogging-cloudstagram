@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,14 +29,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/posts/{id}', function (string $id) {
-    $post = App\Models\Post::find($id, ['id', 'title', 'content']);
-
-    if (!$post) {
-        abort(404, 'Post not found');
-    }
-
-    return view('post', ['post' => $post]);
-});
+Route::get('/posts/{id}', [PostController::class, 'displayOne']);
 
 require __DIR__.'/auth.php';

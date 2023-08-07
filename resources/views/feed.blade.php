@@ -5,13 +5,23 @@
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
+    <table class='border-separate border-8 border-double border-black'>
+        <thead class='border-4 border-black'>
+            <tr>
+            @foreach (array_keys($posts->first()) as $key)
+                <th class='border border-black'>{{ $key }}</th>
+            @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($posts as $post)
+                <tr>
+                @foreach ($post as $key=>$value)
+                    <td class='border border-black'>{{ $value }}</td>
+                @endforeach
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 </x-app-layout>

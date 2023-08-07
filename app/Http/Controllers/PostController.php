@@ -17,6 +17,11 @@ class PostController extends Controller
         return view('post', ['post' => $post]);
     }
 
+    public function show () {
+        $posts = Post::all()->map->only(['title', 'content']);
+        return view('feed', ['posts' => $posts]);
+    }
+
     public function create() {
         
     }

@@ -18,18 +18,16 @@ class PostController extends Controller
     }
 
     public function show () {
-        // $posts = Post::all()->map->only(['title', 'content', 'user_id', 'created_at'])->sortByDesc('created_at');
-        // $posts = Post::with('user:id,name')->get()->map->sortByDesc('created_at');
-        $posts = Post::with('user:id,name')->get()->map(function($post, $key) {
+        $data = Post::with('user:id,name')->get()->sortByDesc('created_at');
+        $posts = $data->map(function($post, $key) {
             return [
                 'title' => $post->title,
                 'content' => $post->content,
                 'author' => $post->user->name,
-                'date' => $post->created_at->format('d.m.Y'),
+                'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
             ];
         });
-        dd($posts);
-        // return view('feed', ['posts' => $posts]);
+        return view('feed', ['posts' => $posts]);
     }
 
     public function create() {

@@ -31,7 +31,7 @@ class PostCreationController extends Controller
             'user_id' => $user->id
         ]);
 
-        return redirect('dashboard');
+        return redirect('feed');
     }
 
 }

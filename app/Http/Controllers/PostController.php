@@ -18,7 +18,7 @@ class PostController extends Controller
     }
 
     public function show () {
-        $posts = Post::all()->map->only(['title', 'content']);
+        $posts = Post::all()->map->only(['title', 'content', 'created_at'])->sortByDesc('created_at');
         return view('feed', ['posts' => $posts]);
     }
 

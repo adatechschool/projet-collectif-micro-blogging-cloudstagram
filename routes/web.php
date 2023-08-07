@@ -33,8 +33,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts/{id}', [PostController::class, 'displayOne']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/create_post', [PostCreationController::class, 'create'])->name('blibli');
-    Route::post('/create_post', [PostCreationController::class, 'store'])->name('blabla');
+    Route::get('/create_post', [PostCreationController::class, 'create'])->name('post.create');
+    Route::post('/create_post', [PostCreationController::class, 'store'])->name('post.store');
 });
 
 require __DIR__.'/auth.php';

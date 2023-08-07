@@ -6,7 +6,7 @@
     </x-slot>
     
     <x-app-layout>
-        <form method="POST" action="{{ route('blibli') }}">
+        <form method="POST" action="{{ route('post.store') }}">
             @csrf
             @method('POST')
     
@@ -24,7 +24,6 @@
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
 
-            {{-- Reste à chopper le user id mais en le cachant pour l'envoyer dans la bdd.  --}}
     
                 <x-primary-button class="ml-4">
                     {{ __('Post') }}

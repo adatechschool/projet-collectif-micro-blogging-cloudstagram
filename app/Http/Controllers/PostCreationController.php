@@ -30,6 +30,8 @@ class PostCreationController extends Controller
             'content' => $request->content,
             'user_id' => $user->id
         ]);
+
+        return redirect('dashboard');
     }
 
 }

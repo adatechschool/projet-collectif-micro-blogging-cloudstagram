@@ -5,9 +5,10 @@
         </h2>
     </x-slot>
     
-    <x-guest-layout>
-        <form method="POST" action="{{ route('postCreation') }}">
+    <x-app-layout>
+        <form method="POST" action="{{ route('blibli') }}">
             @csrf
+            @method('POST')
     
             <!-- Title -->
             <div>
@@ -22,12 +23,14 @@
                 <x-textarea id="content" class="block mt-1 w-full" type="text" name="content" :value="old('content')" required autocomplete="content" />
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
+
+            {{-- Reste à chopper le user id mais en le cachant pour l'envoyer dans la bdd.  --}}
     
                 <x-primary-button class="ml-4">
                     {{ __('Post') }}
                 </x-primary-button>
             </div>
         </form>
-    </x-guest-layout>
+    </x-app-layout>
     
 </x-app-layout>

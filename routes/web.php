@@ -21,9 +21,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/feed', function () {
-    return view('feed');
-})->middleware(['auth', 'verified'])->name('feed');
+Route::get('/feed', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('feed');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

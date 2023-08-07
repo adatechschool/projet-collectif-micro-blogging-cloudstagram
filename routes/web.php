@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostCreationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +34,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/posts/{id}', [PostController::class, 'displayOne']);
 
 Route::get('/users', [UserController::class, 'show'])->name('users.show');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/create_post', [PostCreationController::class, 'create'])->name('post.create');
+    Route::post('/create_post', [PostCreationController::class, 'store'])->name('post.store');
+});
 
 require __DIR__.'/auth.php';

@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
     
-    <h1>{{ $post->title }}</h1>
-    <p>{{ $post->content }}</p>
+
+
+        <x-post-component :post="$post"></x-post-component> 
+
 </x-app-layout>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostCreationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,8 +32,9 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/posts/{id}', [PostController::class, 'displayOne']);
 
-Route::post('/create_post', function () {
-    return view('postCreation');
-})->middleware(['auth', 'verified'])->name('postCreation');;
+Route::middleware('auth')->group(function () {
+    Route::get('/create_post', [PostCreationController::class, 'create'])->name('blibli');
+    Route::post('/create_post', [PostCreationController::class, 'store'])->name('blabla');
+});
 
 require __DIR__.'/auth.php';

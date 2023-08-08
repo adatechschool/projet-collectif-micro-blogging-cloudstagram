@@ -18,7 +18,7 @@ class ProfileUpdateTest extends TestCase
     {
         $user = User::factory()->create();
 
-        $response = $this->actingAs($user)->get('/profile');
+        $response = $this->actingAs($user)->get('/settings');
         $response->assertOk();
     }
 
@@ -28,11 +28,11 @@ class ProfileUpdateTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch('/profile', ['biography' => 'Voici ma biographie']);
+            ->patch('/settings', ['biography' => 'Voici ma biographie']);
         
         $response
             ->assertSessionHasNoErrors()
-            ->assertRedirect('/profile');
+            ->assertRedirect('/settings');
         
         $user->refresh();
 

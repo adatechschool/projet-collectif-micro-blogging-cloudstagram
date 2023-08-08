@@ -37,13 +37,13 @@ class SettingsController extends Controller
         return Redirect::route('settings.edit')->with('status', 'settings-updated');
     }
 
-    public function update_bio(ProfileUpdateRequest $request): RedirectResponse
+    public function update_bio(SettingsUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
 
         $request->user()->save();
 
-        return Redirect::route('profile.update_bio')->with('status', 'bio_updated');
+        return Redirect::route('settings.update_bio')->with('status', 'bio_updated');
 
     }
 

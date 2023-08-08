@@ -4,7 +4,9 @@ use App\Http\Controllers\settingsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostCreationController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,11 @@ Route::get('/', function () {
 Route::get('/feed', function () {
     return view('feed');
 })->middleware(['auth', 'verified'])->name('feed');
+
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware(['auth', 'verified'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');

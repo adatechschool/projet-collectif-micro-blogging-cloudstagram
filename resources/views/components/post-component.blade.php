@@ -6,5 +6,5 @@
         <h3 class=" text-xl font-bold text-red-400 mb-1">{{ $post->title }}</h3>
         <p class=" mb-3">“ {{ $post->content }} „</p>
         <p class=" text-sm italic">published by user n° {{ $post->user_id }} on {{ $post->created_at }}</p>
-</div>
+    </div>
 </div>

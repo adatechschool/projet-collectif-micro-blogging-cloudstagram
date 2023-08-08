@@ -17,6 +17,19 @@ class PostController extends Controller
         return view('post', ['post' => $post]);
     }
 
+    public function show () {
+        $data = Post::with('user:id,name')->get()->sortByDesc('created_at');
+        $posts = $data->map(function($post, $key) {
+            return [
+                'title' => $post->title,
+                'content' => $post->content,
+                'author' => $post->user->name,
+                'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
+            ];
+        });
+        return view('feed', ['posts' => $posts]);
+    }
+
     public function create() {
         
     }

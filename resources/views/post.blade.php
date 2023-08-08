@@ -5,8 +5,6 @@
         </h2>
     </x-slot>
     
-
-
-        <x-post-component :post="$post"></x-post-component> 
+    <x-post-component :post="$post"></x-post-component> 
 
 </x-app-layout>

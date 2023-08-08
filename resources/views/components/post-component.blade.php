@@ -1,9 +1,8 @@
 @props(['post'])
 
-<div class="flex flex-row ml-10 p-6">
-    <div class="text-3xl font-bold text-red-300 absolute top-36 left-10 w-4 rotate-90">.ೃ࿐</div>
+<div class="flex ml-10 p-6 w-96 opacity-30 hover:opacity-100">
     <div class="flex flex-col">    
-        <h3 class=" text-xl font-bold text-red-400 mb-1">{{ $post['title'] }}</h3>
+        <h3 class=" text-xl font-bold text-red-400 mb-1">.ೃ࿐ {{ $post['title'] }}</h3>
         <p class=" mb-3">“ {{ $post['content'] }} „</p>
         <p class=" text-sm italic">published by {{ $post['author'] }} on {{ $post['date'] }}</p>
 </div>

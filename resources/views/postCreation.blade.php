@@ -6,7 +6,7 @@
     </x-slot>
     
     <div class="w-full flex justify-center mt-10">
-        <form method="POST" action="{{ route('post.store') }}">
+        <form method="POST" enctype="multipart/form-data" action="{{ route('post.store') }}">
             @csrf
             @method('POST')
 
@@ -24,11 +24,18 @@
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
 
-            <!-- Image -->
+            <!-- Image by URL -->
             <div>
                 <x-input-label for="imageUrl" :value="__('Image URL')" />
-                <x-text-input id="imageUrl" class="block mt-1 w-full" type="text" name="imageUrl" :value="old('imageUrl')" required autofocus autocomplete="imageUrl" />
+                <x-text-input id="imageUrl" class="block mt-1 w-full" type="text" name="imageUrl" :value="old('imageUrl')" autofocus autocomplete="imageUrl" />
                 <x-input-error :messages="$errors->get('imageUrl')" class="mt-2" />
+            </div>
+
+            <!-- Image by file -->
+            <div>
+                <x-input-label for="imageFile" :value="__('Or Image File')" />
+                <input type="file" name="imageFile" placeholder="Choose image" id="imageFile">
+                <x-input-error :messages="$errors->get('imageFile')" class="mt-2" />
             </div>
 
 

@@ -29,8 +29,4 @@ class PostController extends Controller
         });
         return view('feed', ['posts' => $posts]);
     }
-
-    public function create() {
-        
-    }
 }

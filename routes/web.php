@@ -29,6 +29,7 @@ Route::get('/profile', function () {
     return view('profile');
     })->middleware(['auth', 'verified'])->name('profile');
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+Route::get('/profile/{id}', [ProfileController::class, 'showUser'])->name('profile.showUser');
 
 Route::middleware('auth')->group(function () {
     Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');
@@ -45,5 +46,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/create_post', [PostCreationController::class, 'create'])->name('post.create');
     Route::post('/create_post', [PostCreationController::class, 'store'])->name('post.store');
 });
+
 
 require __DIR__.'/auth.php';

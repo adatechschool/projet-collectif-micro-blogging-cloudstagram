@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect('/feed');
+    })->middleware(['auth', 'verified'])->name('feed');
 
 Route::get('/feed', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('feed');
 
 Route::get('/profile', function () {
     return view('profile');
-})->middleware(['auth', 'verified'])->name('profile');
+    })->middleware(['auth', 'verified'])->name('profile');
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
 
 Route::middleware('auth')->group(function () {

@@ -13,6 +13,6 @@
         <img src="{{asset('storage/img/cloud_default.jpg')}}" alt="Default cloud image">
         @endif
         <p class=" mb-3">“ {{ $post['content'] }} „</p>
-        <p class=" text-sm italic">published by {{ $post['author'] }} on {{ $post['date'] }}</p>
+        <p class=" text-sm italic">published by <a href='/profile/{{ $post['author_id'] }}'>{{ $post['author'] }}</a> on {{ $post['date'] }}</p>
 </div>
 </div>

@@ -7,7 +7,7 @@
         @if (isset($post['imageURL']))
         <img src="{{ $post['imageURL'] }}">
         @else
-        <img src="{{asset('images/cloud_default.jpg')}}" alt="Default cloud image">
+        <img src="{{asset('storage/img/cloud_default.jpg')}}" alt="Default cloud image">
         @endif
         <p class=" mb-3">“ {{ $post['content'] }} „</p>
         <p class=" text-sm italic">published by {{ $post['author'] }} on {{ $post['date'] }}</p>

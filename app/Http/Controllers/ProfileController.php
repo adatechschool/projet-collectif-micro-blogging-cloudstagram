@@ -7,22 +7,22 @@ use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
-{
-//     public function show(): View
-//     {
-//         $user = Auth::user();
-//         // dd($user);
-//         return view('profile', ['user' => $user]);
-//     }
-
-//     return redirect()->route('profile.show');
-
-    
+{    
     public function show(): View
     {
 
         $user = Auth::user(); 
-        return view('profile', ['user' => $user]);
+        $data = $user->posts()->latest()->take(10)->get();
+        $posts = $data->map(function($post, $key) {
+            return [
+                'title' => $post->title,
+                'content' => $post->content,
+                'author' => $post->user->name,
+                'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
+            ];
+        });
+
+        return view('profile', ['posts' => $posts,'user'=>$user]);
 
     }
 }

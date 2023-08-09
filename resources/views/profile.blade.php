@@ -10,7 +10,16 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">{{ $user->name }}</div>
                 <div class="p-6 text-gray-900">{{ $user->biography }}</div>
-                <div class="p-6 text-gray-900">{{ $user->posts }}</div>
+                
+                
+                <div class="p-6 text-gray-900">
+                    {{ __('My Posts') }}
+                </div>
+                    <div class="text-xl font-semibold mb-4">
+                        @foreach ($posts as $post)
+                        <x-post-component :post="$post" ></x-post-component>
+                        @endforeach
+                    </div>
             </div>
         </div>
     </div>

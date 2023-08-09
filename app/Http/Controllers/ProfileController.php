@@ -35,6 +35,7 @@ class ProfileController extends Controller
                 'content' => $post->content,
                 'author' => $post->user->name,
                 'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
+                'author_id' => $post->user->id
             ];
         });
 

@@ -4,7 +4,11 @@
     <div class="flex flex-col">    
         <h3 class=" text-xl font-bold text-red-400 mb-1">.ೃ࿐ {{ $post['title'] }}</h3>
         @if (isset($post['imageUrl']))
-        <img src="{{ $post['imageUrl'] }}">
+            @if (preg_match('/^https{0,1}.*/', $post['imageUrl'])==1)
+            <img src="{{ $post['imageUrl'] }}">
+            @else
+            <img src="{{ asset('storage/img/'.$post['imageUrl']) }}" onerror="this.onerror=null;this.src='{{asset('storage/img/cloud_default.jpg')}}';">
+            @endif
         @else
         <img src="{{asset('storage/img/cloud_default.jpg')}}" alt="Default cloud image">
         @endif

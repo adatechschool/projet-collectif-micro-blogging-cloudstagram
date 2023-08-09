@@ -28,7 +28,8 @@ class PostCreationController extends Controller
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'imageUrl' => $request->imageUrl,
         ]);
 
         return redirect('feed');

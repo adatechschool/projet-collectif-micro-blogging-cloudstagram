@@ -24,6 +24,13 @@
                 <x-input-error :messages="$errors->get('content')" class="mt-2" />
             </div>
 
+            <!-- Image -->
+            <div>
+                <x-input-label for="imageUrl" :value="__('Image URL')" />
+                <x-text-input id="imageUrl" class="block mt-1 w-full" type="text" name="imageUrl" :value="old('imageUrl')" required autofocus autocomplete="imageUrl" />
+                <x-input-error :messages="$errors->get('imageUrl')" class="mt-2" />
+            </div>
+
 
                 <x-primary-button class="ml-24 mt-2">
                     {{ __('Post') }}

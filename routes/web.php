@@ -1,10 +1,12 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\settingsController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostCreationController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +25,16 @@ Route::get('/', function () {
 
 Route::get('/feed', [PostController::class, 'show'])->middleware(['auth', 'verified'])->name('feed');
 
+Route::get('/profile', function () {
+    return view('profile');
+})->middleware(['auth', 'verified'])->name('profile');
+Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');
+    Route::patch('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::delete('/settings', [SettingsController::class, 'destroy'])->name('settings.destroy');
+    Route::put('/settings', [SettingsController::class, 'update_bio'])->name('settings.update_bio');
 });
 
 Route::get('/posts/{id}', [PostController::class, 'displayOne']);

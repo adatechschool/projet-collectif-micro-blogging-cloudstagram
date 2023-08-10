@@ -23,12 +23,23 @@ class PostCreationController extends Controller
             'content' => ['required', 'string', 'max:3000'],
         ]);
 
+        $imageName = $request->imageUrl;
+
+        if (isset($request->imageFile)) {
+            $request->validate([
+                'imageFile' => 'required|image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048'
+            ]);
+            $path = $request->file('imageFile')->store('public/img');
+            $imageName = $request->file('imageFile')->hashName();
+        }
+
         $user = Auth::user();
 
         $post = Post::create([
             'title' => $request->title,
             'content' => $request->content,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'imageUrl' => $imageName,
         ]);
 
         return redirect('feed');

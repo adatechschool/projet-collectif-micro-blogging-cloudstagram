@@ -18,7 +18,7 @@ class ProfileController extends Controller
                 'title' => $post->title,
                 'content' => $post->content,
                 'author' => $post->user->name,
-                'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
+                'date' => $post->created_at->format("d M Y \\a\\t H:i"),
                 'author_id' => $post->user->id
             ];
         });
@@ -35,7 +35,7 @@ class ProfileController extends Controller
                 'title' => $post->title,
                 'content' => $post->content,
                 'author' => $post->user->name,
-                'date' => $post->created_at->format("d M Y \\a\\t H:m:s"),
+                'date' => $post->created_at->format("d M Y \\a\\t H:i"),
                 'author_id' => $post->user->id
             ];
         });

@@ -13,6 +13,6 @@
         <img src="{{asset('storage/img/cloud_default.jpg')}}" alt="Default cloud image">
         @endif
         <p class=" mb-3">“ {{ $post->content }} „</p>
-        <p class=" text-sm italic">published by <a href='/profile/{{ $post->user_id }}'>{{ $post->user->name }}</a> on {{ $post->created_at->setTimeZone('Europe/Paris')->format("d M Y \\a\\t H:i") }}</p>
+        <p class=" text-sm italic">published by <a class="hover:underline" href='/profile/{{ $post->user_id }}'>{{ $post->user->name }}</a> on {{ $post->created_at->setTimeZone('Europe/Paris')->format("d M Y \\a\\t H:i") }}</p>
 </div>
 </div>

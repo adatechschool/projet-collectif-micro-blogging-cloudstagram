@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     function displayOne (string $id) {
-        $post = Post::find($id, ['id', 'title', 'content', 'user_id', 'created_at']);
+        $post = Post::find($id);
     
         if (!$post) {
             abort(404, 'Post not found');
@@ -18,17 +18,8 @@ class PostController extends Controller
     }
 
     public function show () {
-        $data = Post::with('user:id,name')->get()->sortByDesc('created_at');
-        $posts = $data->map(function($post, $key) {
-            return [
-                'title' => $post->title,
-                'content' => $post->content,
-                'author' => $post->user->name,
-                'date' => $post->created_at->format("d M Y \\a\\t H:i"),
-                'author_id' => $post->user_id,
-                'imageUrl' => $post->imageUrl,
-            ];
-        });
+        $posts = Post::with('user:id,name')->get()->sortByDesc('created_at');
+
         return view('feed', ['posts' => $posts]);
     }
 }
